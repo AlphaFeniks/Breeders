@@ -19,12 +19,6 @@ namespace Breeder_OnMVC.Controllers
             _context = context;
         }
 
-        // GET: Breeders
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Breeder.ToListAsync());
-        }
-
         // GET: Breeders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -155,13 +149,11 @@ namespace Breeder_OnMVC.Controllers
             var breeders = from m in _context.Breeder
                            select m;
 
-
             if (!String.IsNullOrEmpty(searchString))
             {
                 breeders = breeders.Where(s => s.Name.Contains(searchString) || s.Author.Contains(searchString) || s.ParentVarieties.Contains(searchString) || s.Productivity.Contains(searchString)
                                 || s.Characteristic.Contains(searchString) || s.FrostResistance.Contains(searchString) || s.DiseaseResistance.Contains(searchString) || s.Funds.Contains(searchString));
             }
-
             return View(await breeders.ToListAsync());
         }
     }

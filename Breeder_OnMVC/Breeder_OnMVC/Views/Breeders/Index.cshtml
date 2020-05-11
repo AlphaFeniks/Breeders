@@ -4,16 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Справочник Селекционера</h1>
+<h1 class="display-4">Справочник Селекционера</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p>    
+    <a asp-action="Create">
+        <input type="submit" value="Добавить" class="btn btn-success" />
+    </a>
 </p>
 
 <form asp-controller="Breeders" asp-action="Index">
     <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Filter" />
+        
+        <div class="form-group">
+            <input type="text" name="SearchString">
+            <input type="submit" value="Искать" class="btn btn-primary" />
+        </div>
+
+
     </p>
 </form>
 
@@ -76,10 +83,16 @@
                     @Html.DisplayFor(modelItem => item.Funds)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                    <div class="marginbtn">
+                        <a asp-action="Edit" asp-route-id="@item.Id"><input type="submit" value="Изменить" class="btn btn-success" /> </a>
+                    </div>
+                    <div class="marginbtn">
+                        <a asp-action="Details" asp-route-id="@item.Id"><input type="submit" value="Детали" class="btn btn-info" /> </a>
+                    </div>
+                    <div class="marginbtn">
+                        <a asp-action="Delete" asp-route-id="@item.Id"><input type="submit" value="Удалить" class="btn btn-danger" /> </a>
+                    </div>
+</td>
             </tr>
         }
     </tbody>

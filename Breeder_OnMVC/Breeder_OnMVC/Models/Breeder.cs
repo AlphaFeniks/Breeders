@@ -14,7 +14,7 @@ namespace Breeder_OnMVC.Models
 
         [Required]
 
-        [DisplayName("Имя")]
+        [DisplayName("Сорт")]
         public string Name { get; set; }
 
         [DisplayName("Автор")]
@@ -36,9 +36,6 @@ namespace Breeder_OnMVC.Models
         public string DiseaseResistance { get; set; }
 
         [DisplayName("Фонды")]
-        public string Funds { get; set; }
-
-       
-        
+        public string Funds { get; set; }             
     }
 }

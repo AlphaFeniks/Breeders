@@ -1,12 +1,12 @@
 ﻿@model Breeder_OnMVC.Models.Breeder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Удалить";
 }
 
-<h1>Edit</h1>
+<h1>Изменение</h1>
 
-<h4>Breeder</h4>
+<h4>Справочник</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -54,15 +54,17 @@
                 <span asp-validation-for="Funds" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
+       
+        <div>
+            <a asp-action="Index">Вернутся назад</a>
+        </div>   
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
