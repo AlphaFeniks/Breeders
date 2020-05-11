@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Breeder_OnMVC.Models.Breeder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Справочник Селекционера</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Breeders" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentVarieties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productivity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Characteristic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrostResistance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiseaseResistance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funds)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentVarieties)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Productivity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Characteristic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrostResistance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiseaseResistance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funds)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
