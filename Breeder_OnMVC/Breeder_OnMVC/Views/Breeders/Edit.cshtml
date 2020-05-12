@@ -40,18 +40,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="FrostResistance" class="control-label"></label>
-                <input asp-for="FrostResistance" class="form-control" />
-                <span asp-validation-for="FrostResistance" class="text-danger"></span>
+                <select asp-for="FrostResistance" class="form-control">
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="DiseaseResistance" class="control-label"></label>
-                <input asp-for="DiseaseResistance" class="form-control" />
-                <span asp-validation-for="DiseaseResistance" class="text-danger"></span>
+                <select asp-for="DiseaseResistance" class="form-control">
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Funds" class="control-label"></label>
-                <input asp-for="Funds" class="form-control" />
-                <span asp-validation-for="Funds" class="text-danger"></span>
+                <select asp-for="Funds" class="form-control">
+                    <option value="Львовский ЛСНЦ">Львовский ЛСНЦ</option>
+                    <option value="Волынский ЛСНЦ">Волынский ЛСНЦ</option>
+                    <option value="Киевский ЛСНЦ">Киевский ЛСНЦ</option>
+                    <option value="Харьковский ЛСНЦ">Харьковский ЛСНЦ</option>
+                    <option value="Херсонский ЛСНЦ">Херсонский ЛСНЦ</option>
+                    <option value="Полтавский ЛСНЦ">Полтавский ЛСНЦ</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
