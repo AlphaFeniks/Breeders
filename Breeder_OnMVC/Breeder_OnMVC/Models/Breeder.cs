@@ -24,6 +24,8 @@ namespace Breeder_OnMVC.Models
         [DisplayName("Родительские сорта")]
         public string ParentVarieties { get; set; }
 
+        [Required]
+
         [DisplayName("Урожайность(га)")]
         public string Productivity { get; set; }
 

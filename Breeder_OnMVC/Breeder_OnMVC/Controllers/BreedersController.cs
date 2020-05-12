@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Breeder_OnMVC.Data;
 using Breeder_OnMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Breeder_OnMVC.Controllers
 {
+    [Authorize]
     public class BreedersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -44,8 +46,6 @@ namespace Breeder_OnMVC.Controllers
         }
 
         // POST: Breeders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Author,ParentVarieties,Productivity,Characteristic,FrostResistance,DiseaseResistance,Funds")] Breeder breeder)
@@ -76,8 +76,6 @@ namespace Breeder_OnMVC.Controllers
         }
 
         // POST: Breeders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Author,ParentVarieties,Productivity,Characteristic,FrostResistance,DiseaseResistance,Funds")] Breeder breeder)
