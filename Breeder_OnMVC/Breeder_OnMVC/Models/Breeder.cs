@@ -9,6 +9,7 @@ namespace Breeder_OnMVC.Models
 {
     public class Breeder
     {
+        //поля
         [Key]
         public int Id { get; set; }
 
@@ -23,7 +24,7 @@ namespace Breeder_OnMVC.Models
         [DisplayName("Родительские сорта")]
         public string ParentVarieties { get; set; }
 
-        [DisplayName("Урожайность")]
+        [DisplayName("Урожайность(га)")]
         public string Productivity { get; set; }
 
         [DisplayName("Характеристика")]
