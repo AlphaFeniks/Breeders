@@ -142,11 +142,73 @@ namespace Breeder_OnMVC.Controllers
             return _context.Breeder.Any(e => e.Id == id);
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        //поиск|фильтр
+        public async Task<IActionResult> Index(string searchString, string sortOrder)
         {
+            //фильтр
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Author" ? "author_desc" : "Author";
+            ViewBag.DateSortParm1 = sortOrder == "ParentVarieties" ? "parentVarieties_desc" : "ParentVarieties";
+            ViewBag.DateSortParm2 = sortOrder == "Productivity" ? "productivity_desc" : "Productivity";
+            ViewBag.DateSortParm3 = sortOrder == "Characteristic" ? "characteristic_desc" : "Characteristic";
+            ViewBag.DateSortParm4 = sortOrder == "FrostResistance" ? "frostResistance_desc" : "FrostResistance";
+            ViewBag.DateSortParm5 = sortOrder == "DiseaseResistance" ? "diseaseResistance_desc" : "DiseaseResistance";
+            ViewBag.DateSortParm6 = sortOrder == "Funds" ? "funds_desc" : "Funds";
             var breeders = from m in _context.Breeder
                            select m;
 
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    breeders = breeders.OrderByDescending(s => s.Name);
+                    break;
+                case "Author":
+                    breeders = breeders.OrderBy(s => s.Author);
+                    break;
+                case "author_desc":
+                    breeders = breeders.OrderByDescending(s => s.Author);
+                    break;
+                case "ParentVarieties":
+                    breeders = breeders.OrderBy(s => s.ParentVarieties);
+                    break;
+                case "parentVarieties_desc":
+                    breeders = breeders.OrderByDescending(s => s.ParentVarieties);
+                    break;
+                case "Productivity":
+                    breeders = breeders.OrderBy(s => s.Productivity);
+                    break;
+                case "productivity_desc":
+                    breeders = breeders.OrderByDescending(s => s.Productivity);
+                    break;
+                case "Characteristic":
+                    breeders = breeders.OrderBy(s => s.Characteristic);
+                    break;
+                case "characteristic_desc":
+                    breeders = breeders.OrderByDescending(s => s.Characteristic);
+                    break;
+                case "FrostResistance":
+                    breeders = breeders.OrderBy(s => s.FrostResistance);
+                    break;
+                case "frostResistance_desc":
+                    breeders = breeders.OrderByDescending(s => s.FrostResistance);
+                    break;
+                case "DiseaseResistance":
+                    breeders = breeders.OrderBy(s => s.DiseaseResistance);
+                    break;
+                case "diseaseResistance_desc":
+                    breeders = breeders.OrderByDescending(s => s.DiseaseResistance);
+                    break;
+                case "Funds":
+                    breeders = breeders.OrderBy(s => s.Funds);
+                    break;
+                case "funds_desc":
+                    breeders = breeders.OrderByDescending(s => s.Funds);
+                    break;
+                default:
+                    breeders = breeders.OrderBy(s => s.Name);
+                    break;
+            }
+            //поиск
             if (!String.IsNullOrEmpty(searchString))
             {
                 breeders = breeders.Where(s => s.Name.Contains(searchString) || s.Author.Contains(searchString) || s.ParentVarieties.Contains(searchString) || s.Productivity.Contains(searchString)

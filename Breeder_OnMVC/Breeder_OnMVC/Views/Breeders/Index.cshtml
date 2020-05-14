@@ -25,73 +25,75 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Name), "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Author), "Index", new { sortOrder = ViewBag.DateSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParentVarieties)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.ParentVarieties), "Index", new { sortOrder = ViewBag.DateSortParm1 })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Productivity)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Productivity), "Index", new { sortOrder = ViewBag.DateSortParm2 })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Characteristic)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Characteristic), "Index", new { sortOrder = ViewBag.DateSortParm3 })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FrostResistance)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.FrostResistance), "Index", new { sortOrder = ViewBag.DateSortParm4 })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiseaseResistance)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.DiseaseResistance), "Index", new { sortOrder = ViewBag.DateSortParm5 })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Funds)
+                @Html.ActionLink(@Html.DisplayNameFor(model => model.Funds), "Index", new { sortOrder = ViewBag.DateSortParm6 })              
             </th>
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParentVarieties)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Productivity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Characteristic)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FrostResistance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiseaseResistance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Funds)
-                </td>
-                <td>
-                    <div class="marginbtn">
-                        <a asp-action="Edit" asp-route-id="@item.Id"><input type="submit" value="Изменить" class="btn btn-success" /> </a>
-                    </div>
-                    <div class="marginbtn">
-                        <a asp-action="Details" asp-route-id="@item.Id"><input type="submit" value="Детали" class="btn btn-info" /> </a>
-                    </div>
-                    <div class="marginbtn">
-                        <a asp-action="Delete" asp-route-id="@item.Id"><input type="submit" value="Удалить" class="btn btn-danger" /> </a>
-                    </div>
-</td>
-            </tr>
-        }
-    </tbody>
-</table>
+  
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParentVarieties)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Productivity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Characteristic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FrostResistance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiseaseResistance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Funds)
+                    </td>
+                    <td>
+                        <div class="marginbtn">
+                            <a asp-action="Edit" asp-route-id="@item.Id"><input type="submit" value="Изменить" class="btn btn-success" /> </a>
+                        </div>
+                        <div class="marginbtn">
+                            <a asp-action="Details" asp-route-id="@item.Id"><input type="submit" value="Детали" class="btn btn-info" /> </a>
+                        </div>
+                        <div class="marginbtn">
+                            <a asp-action="Delete" asp-route-id="@item.Id"><input type="submit" value="Удалить" class="btn btn-danger" /> </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
