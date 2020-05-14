@@ -14,27 +14,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" placeholder="Введите наименование сорта.."/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
+                <input asp-for="Author" class="form-control" placeholder="Введите свое имя.."/>
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ParentVarieties" class="control-label"></label>
-                <input asp-for="ParentVarieties" class="form-control" />
+                <input asp-for="ParentVarieties" class="form-control" placeholder="Введите родственные сорта.."/>
                 <span asp-validation-for="ParentVarieties" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Productivity" class="control-label"></label>
-                <input asp-for="Productivity" class="form-control" />
+            <div class="form-group" pattern="[0-9]">
+                <label asp-for="Productivity" class="control-label" ></label>
+                <input asp-for="Productivity" class="form-control" placeholder="Введите урожайность.."/>
                 <span asp-validation-for="Productivity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Characteristic" class="control-label"></label>
-                <input asp-for="Characteristic" class="form-control" />
+                <input asp-for="Characteristic" class="form-control" placeholder="Введите краткую характеристику.."/>
                 <span asp-validation-for="Characteristic" class="text-danger"></span>
             </div>
             <div class="form-group">
