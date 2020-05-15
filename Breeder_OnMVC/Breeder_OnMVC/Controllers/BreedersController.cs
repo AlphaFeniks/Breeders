@@ -52,9 +52,9 @@ namespace Breeder_OnMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(breeder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _context.Add(breeder); //добавили объект
+                await _context.SaveChangesAsync(); //сохранили изменения
+                return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
             }
             return View(breeder);
         }
@@ -89,8 +89,8 @@ namespace Breeder_OnMVC.Controllers
             {
                 try
                 {
-                    _context.Update(breeder);
-                    await _context.SaveChangesAsync();
+                    _context.Update(breeder); //обновляем объект
+                    await _context.SaveChangesAsync(); //сохраняем изменения
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -103,7 +103,7 @@ namespace Breeder_OnMVC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
             }
             return View(breeder);
         }
@@ -117,8 +117,8 @@ namespace Breeder_OnMVC.Controllers
             }
 
             var breeder = await _context.Breeder
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (breeder == null)
+                .FirstOrDefaultAsync(m => m.Id == id); //ищем в бд
+            if (breeder == null) //проверка есть ли запись
             {
                 return NotFound();
             }
@@ -132,11 +132,12 @@ namespace Breeder_OnMVC.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var breeder = await _context.Breeder.FindAsync(id);
-            _context.Breeder.Remove(breeder);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _context.Breeder.Remove(breeder); //удалили объект
+            await _context.SaveChangesAsync(); //сохраним изменения
+            return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
         }
 
+        //cуществует
         private bool BreederExists(int id)
         {
             return _context.Breeder.Any(e => e.Id == id);
@@ -208,6 +209,7 @@ namespace Breeder_OnMVC.Controllers
                     breeders = breeders.OrderBy(s => s.Name);
                     break;
             }
+
             //поиск
             if (!String.IsNullOrEmpty(searchString))
             {
