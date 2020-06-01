@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -23,8 +21,7 @@ namespace Breeder_OnMVC
         }
 
         public IConfiguration Configuration { get; }
-
-        // Метод вызывается во время выполнения, можно использовать для добавления сервисов в контейнер
+    
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -35,8 +32,7 @@ namespace Breeder_OnMVC
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
-
-        //  Метод вызывается во время выполнения, можно использовать для настройки конвейера HTTP-запроса
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

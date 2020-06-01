@@ -21,7 +21,7 @@ namespace Breeder_OnMVC.Controllers
             _context = context;
         }
 
-        // GET: Breeders/Details/5
+        // GET: Детали
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,27 +39,27 @@ namespace Breeder_OnMVC.Controllers
             return View(breeder);
         }
 
-        // GET: Breeders/Create
+        // GET: создаем
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Breeders/Create
+        // POST: создаем
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Author,ParentVarieties,Productivity,Characteristic,FrostResistance,DiseaseResistance,Funds")] Breeder breeder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(breeder); //добавили объект
-                await _context.SaveChangesAsync(); //сохранили изменения
-                return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
+                _context.Add(breeder); 
+                await _context.SaveChangesAsync(); 
+                return RedirectToAction(nameof(Index)); 
             }
             return View(breeder);
         }
 
-        // GET: Breeders/Edit/5
+        // GET: обновляем
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,7 +75,7 @@ namespace Breeder_OnMVC.Controllers
             return View(breeder);
         }
 
-        // POST: Breeders/Edit/5
+        // POST: обновляем
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Author,ParentVarieties,Productivity,Characteristic,FrostResistance,DiseaseResistance,Funds")] Breeder breeder)
@@ -89,8 +89,8 @@ namespace Breeder_OnMVC.Controllers
             {
                 try
                 {
-                    _context.Update(breeder); //обновляем объект
-                    await _context.SaveChangesAsync(); //сохраняем изменения
+                    _context.Update(breeder); 
+                    await _context.SaveChangesAsync(); 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -103,12 +103,12 @@ namespace Breeder_OnMVC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
+                return RedirectToAction(nameof(Index)); 
             }
             return View(breeder);
         }
 
-        // GET: Breeders/Delete/5
+        // GET: удаление
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -117,8 +117,8 @@ namespace Breeder_OnMVC.Controllers
             }
 
             var breeder = await _context.Breeder
-                .FirstOrDefaultAsync(m => m.Id == id); //ищем в бд
-            if (breeder == null) //проверка есть ли запись
+                .FirstOrDefaultAsync(m => m.Id == id); 
+            if (breeder == null) 
             {
                 return NotFound();
             }
@@ -126,15 +126,15 @@ namespace Breeder_OnMVC.Controllers
             return View(breeder);
         }
 
-        // POST: Breeders/Delete/5
+        // POST: удаление
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var breeder = await _context.Breeder.FindAsync(id);
-            _context.Breeder.Remove(breeder); //удалили объект
-            await _context.SaveChangesAsync(); //сохраним изменения
-            return RedirectToAction(nameof(Index)); //вернем редирект на индекс, то есть перенаправим
+            _context.Breeder.Remove(breeder); 
+            await _context.SaveChangesAsync(); 
+            return RedirectToAction(nameof(Index)); 
         }
 
         //cуществует
@@ -148,13 +148,13 @@ namespace Breeder_OnMVC.Controllers
         {
             //фильтр
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Author" ? "author_desc" : "Author";
-            ViewBag.DateSortParm1 = sortOrder == "ParentVarieties" ? "parentVarieties_desc" : "ParentVarieties";
-            ViewBag.DateSortParm2 = sortOrder == "Productivity" ? "productivity_desc" : "Productivity";
-            ViewBag.DateSortParm3 = sortOrder == "Characteristic" ? "characteristic_desc" : "Characteristic";
-            ViewBag.DateSortParm4 = sortOrder == "FrostResistance" ? "frostResistance_desc" : "FrostResistance";
-            ViewBag.DateSortParm5 = sortOrder == "DiseaseResistance" ? "diseaseResistance_desc" : "DiseaseResistance";
-            ViewBag.DateSortParm6 = sortOrder == "Funds" ? "funds_desc" : "Funds";
+            ViewBag.AuthorSortParm = sortOrder == "Author" ? "author_desc" : "Author";
+            ViewBag.ParentVarietiesSortParm = sortOrder == "ParentVarieties" ? "parentVarieties_desc" : "ParentVarieties";
+            ViewBag.ProductivitySortParm = sortOrder == "Productivity" ? "productivity_desc" : "Productivity";
+            ViewBag.CharacteristicSortParm = sortOrder == "Characteristic" ? "characteristic_desc" : "Characteristic";
+            ViewBag.FrostResistanceSortParm = sortOrder == "FrostResistance" ? "frostResistance_desc" : "FrostResistance";
+            ViewBag.DiseaseResistanceSortParm = sortOrder == "DiseaseResistance" ? "diseaseResistance_desc" : "DiseaseResistance";
+            ViewBag.FundsSortParm = sortOrder == "Funds" ? "funds_desc" : "Funds";
             var breeders = from m in _context.Breeder
                            select m;
 

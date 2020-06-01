@@ -25,6 +25,7 @@ namespace Breeder_OnMVC.Models
         public string ParentVarieties { get; set; }
 
         [Required]
+        [RegularExpression("[1-9]{1}[0-9]{0,}", ErrorMessage = "Введите число больше нуля")]
 
         [DisplayName("Урожайность(га)")]
         public string Productivity { get; set; }
